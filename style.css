@@ -1,0 +1,16 @@
+html {
+
+
+}
+.num {
+    text-combine-upright: all;
+    -webkit-text-combine: horizontal;
+}
+
+.container {
+    background-color: aqua;
+    writing-mode: vertical-rl;
+    font: 32px serif;
+    margin: auto;
+    max-width:800px;
+}
