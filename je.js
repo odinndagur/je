@@ -130,12 +130,21 @@ if(!find_btn){
   document.body.appendChild(btn)
 }
 
+document.addEventListener('resize',ready)
 
 
 
 function ready(){
   jeAll = document.querySelectorAll('.jon-egill')
+  alreadyModifiedSpans = document.querySelectorAll('.je-modified')
+  for(let el of alreadyModifiedSpans){
+    console.log("Removing: " + el.textContent)
+    el.remove()
+  }
   for(let je of jeAll){
+    if(je.style.display == 'none'){
+        je.style.display = ''
+    }
       text = je.textContent
       lines = extractLinesFromTextNode(je.firstChild)
       //temp = document.createElement('span')
@@ -145,18 +154,18 @@ function ready(){
       
       maxLen = Math.max(...lines.map(line => line.length))
       iterations = Math.ceil(text.length/maxLen)
-      console.log({
-        iterations,
-        maxLen,
-        lines
-      })
+    //   console.log({
+    //     iterations,
+    //     maxLen,
+    //     lines
+    //   })
       charOffset = 0
       
         for(let index = 0; index < iterations; ++index){
             currentLine = lines[index]
-            console.log(currentLine)
+            // console.log(currentLine)
             currentMaxLen = Math.ceil(Math.min(currentLine.length,(text.length - charOffset)/2))
-            console.log("current max len = " + currentMaxLen, "\ncurrent line length = " + currentLine.length, "\ntext.length = " + text.length + "\ncharOffset = " + charOffset)
+            // console.log("current max len = " + currentMaxLen, "\ncurrent line length = " + currentLine.length, "\ntext.length = " + text.length + "\ncharOffset = " + charOffset)
             charCounter = 0
             for(let i = 0; i < currentMaxLen; i++){
                 let s = document.createElement('span')
@@ -184,7 +193,7 @@ function ready(){
                 //s.textContent = "" + (charOffset + i + currentMaxLen) + ',' + (charOffset+i)
                 // charCounter += 2
                 s.classList.add('num')
-                s.classList.add('customNode')
+                s.classList.add('je-modified')
                 s.style.color = 'blue'
                 je.parentNode.insertBefore(s,je)
                 //temp.appendChild(s)

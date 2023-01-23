@@ -7,31 +7,35 @@
         <!-- <link rel="stylesheet" href="style.css"> -->
         <title>Kínverskir stafir</title>
     </head>
-    <body>
-        <div class="buffer"></div>
+    <body onresize="ready()">
+        <!-- <div class="buffer"></div> -->
+        <button class="button-yo" onclick="ready()" style="min-height: 2rem;margin: auto;text-align: center;">Breyta í comments</button>
         <div class="container">
-            <button class="button">JÆJA</button>
 
-            <p lang="zh-Hant">
+            <p lang="zh-Hant" contenteditable="true">
                 有个
-                <span class="num">105</span>
+                <span contenteditable="true" class="num">105</span>
                 好大
-                <span class="num">4</span>
+                <span contenteditable="true" class="num">4</span>
                 大
-                <span class="num">有个</span>
-                <!-- <span class="jon-egill" id="jon-egill">有个有好大好大好大有个有好好大有个有好大好大好大</span> -->
-                <span class="jon-egill" id="jon-egill">个好大有个好大有个个个</span>
+                <span contenteditable="true" class="num">有个</span>
+                <!-- <span contenteditable="true" class="jon-egill" id="jon-egill">有个有好大好大好大有个有好好大有个有好大好大好大</span> -->
+                <span contenteditable="true" class="jon-egill" id="jon-egill">个好大有个好大有个个个</span>
 
-                <span class="num">有29</span>
+                <span contenteditable="true" class="num">有29</span>
                 好大好大
-                <span class="num">4</span>
-                <span class="jon-egill" id="jon-egill">个好大有个好大有个个个</span>
+                <span contenteditable="true" class="num">4</span>
+                <span contenteditable="true" class="jon-egill" id="jon-egill">个好大有个好大有个个个</span>
                 大
-                <span class="num">有29</span>
+                <span contenteditable="true" class="num">有29</span>
                 好大
-                <span class="num">有个</span>
+                <span contenteditable="true" class="jon-egill" id="jon-egill">个好大有个好大有个个个</span>
+
+                <span contenteditable="true" class="num">有个</span>
+                <span contenteditable="true" class="jon-egill" id="jon-egill">个好大有个好大有个个个</span>
+
             <br/>
-                <!-- <span class="jon-egill" id="jon-egill">有个有好大好大好大</span> -->
+                <!-- <span contenteditable="true" class="jon-egill" id="jon-egill">有个有好大好大好大</span> -->
             </p>
         </div>
     </body>
@@ -41,7 +45,7 @@
 
     <style>
         html {
-            background-color: #222;
+            /* background-color: #222; */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -58,13 +62,13 @@
         }
 
         .container {
-            max-height: 500px;
+            max-height: 100vh;
             padding: 1rem;
             background-color: white;
             writing-mode: vertical-rl;
             font: 60px serif;
             margin: auto;
-            max-width:90vw;
+            /* max-width:90vw; */
         }
 
         .jon-egill {
