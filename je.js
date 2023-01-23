@@ -151,7 +151,7 @@ function ready(){
       //temp.classList.add('num')
       
       spacerCharacter = "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"
-      
+      spacerCharacter = "\u00A0"
       maxLen = Math.max(...lines.map(line => line.length))
       iterations = Math.ceil(text.length/maxLen)
     //   console.log({
