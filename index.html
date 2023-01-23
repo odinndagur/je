@@ -1,131 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <title>Kínverskir stafir</title>
-</head>
-<body>
-    <div class="container">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <title>Kínverskir stafir</title>
+    </head>
+    <body>
+        <div class="buffer"></div>
+        <div class="container">
+            <button class="button">JÆJA</button>
 
-        <p lang="zh-Hant">
-            有个
-            <span class="num">105</span>
+            <p lang="zh-Hant">
+                有个
+                <span class="num">105</span>
+                好大
+                <span class="num">4</span>
+                大
+                <span class="num">有个</span>
+                <!-- <span class="jon-egill" id="jon-egill">有个有好大好大好大有个有好好大有个有好大好大好大</span> -->
+                <span class="jon-egill" id="jon-egill">个好大有个好大有个个个</span>
+
+                <span class="num">有29</span>
+                好大好大
+                <span class="num">4</span>
+                <span class="jon-egill" id="jon-egill">个好大有个好大有个个个</span>
+                大
+                <span class="num">有29</span>
+                好大
+                <span class="num">有个</span>
             <br/>
-            好大
-            <span class="num">4</span>
-            大
-            <span class="num">有个</span>
-            <span class="jon-egill" id="jon-egill">有个有好大好大好大有个有好大好大好大有个有好大好大好大</span>
-
-        <br/>
-
-            <span class="num">有29</span>
-            好大好大
-            <span class="num">4</span>
-            大
-            <span class="num">有29</span>
-            好大
-            <span class="num">有个</span>
-        <br/>
-            <!-- <span class="jon-egill" id="jon-egill">有个有好大好大好大</span> -->
-        </p>
-    </div>
-</body>
+                <!-- <span class="jon-egill" id="jon-egill">有个有好大好大好大</span> -->
+            </p>
+        </div>
+    </body>
 
 
-<script>
-    let je
+    <script async defer src="je.js"></script>
 
-    const isOverflown = ({ clientHeight, scrollHeight }) => scrollHeight > clientHeight
-    const resizeText = ({ element, parent }) => {
-        let i = 12 // let's start with 12px
-        let overflow = false
-        const maxSize = 128 // very huge text size
-
-        while (!overflow && i < maxSize) {
-            element.style.fontSize = `${i}px`
-            overflow = isOverflown(parent)
-            if (!overflow) i++
+    <style>
+        html {
+            background-color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        // revert to last state where no overflow happened:
-        element.style.fontSize = `${i - 1}px`
-    }
-
-    class JE {
-        constructor(){
-            this.jonEgillLoaded = false
+        .buffer {
+            height: 3rem;
+        }
+        .num {
+            text-combine-upright: all;
+            -webkit-text-combine: horizontal;
+            overflow-wrap: break-word;
+            display: inline-block;
         }
 
-        initJonEgill(){
-            this.jonEgillLoaded = true;
-            console.log('jon egill')
-            let original_node = document.getElementById("jon-egill")
+        .container {
+            max-height: 500px;
+            padding: 1rem;
+            background-color: white;
+            writing-mode: vertical-rl;
+            font: 60px serif;
+            margin: auto;
+            max-width:90vw;
+        }
 
-            let original_text = original_node.textContent
-            let clone_node = original_node.cloneNode(true)
-            original_node.appendChild(clone_node)
-            clone_node.style.display = "none"
-            original_node.textContent = ""
-
-            if(original_text.length % 2 == 0){
-                original_text = original_text.concat(" ")
-            }
-            var chunks = [];
-
-            for (var i = 0, charsLength = original_text.length; i < charsLength; i += 2) {
-                chunks.push(original_text.substring(i, i + 2));
-            }
-            for(let chunk of chunks){
-                let span = document.createElement("span")
-                span.textContent = chunk
-                span.setAttribute("class","num")
-                original_node.appendChild(span)
-            }
-        
-            console.log(clone_node.textContent.length)
-            console.log(isOverflown({element:clone_node,parent:clone_node.parentNode}))
-            }
-            }
-
-    
-
-    window.addEventListener("load", (event) => {
-    console.log("page is fully loaded");
-    je = new JE()
-    if(!je.jonEgillLoaded){
-        je.initJonEgill();
-    }
-    });
-</script>
-
-<style>
-    html {
-        background-color: #777;
-    }
-    .num {
-        text-combine-upright: all;
-        -webkit-text-combine: horizontal;
-        overflow-wrap: break-word;
-    }
-
-    .container {
-        max-height: 200px;
-        padding: 1rem;
-        background-color: white;
-        writing-mode: vertical-rl;
-        font: 32px serif;
-        margin: auto;
-        max-width:800px;
-    }
-
-    .jon-egill {
-        color:red;
-        
-    }
-</style>
+        .jon-egill {
+            color:red;
+            overflow-wrap: break-word;
+            font-family: monospace;
+        }
+    </style>
 </html>
-
