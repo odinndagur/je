@@ -147,34 +147,22 @@ function ready(){
     }
       text = je.textContent
       lines = extractLinesFromTextNode(je.firstChild)
-      //temp = document.createElement('span')
-      //temp.classList.add('num')
-      
-      spacerCharacter = "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0"
-      spacerCharacter = "\u00A0"
+
+      spacerCharacter = "\u3000"
       maxLen = Math.max(...lines.map(line => line.length))
       iterations = Math.ceil(text.length/maxLen)
-    //   console.log({
-    //     iterations,
-    //     maxLen,
-    //     lines
-    //   })
       charOffset = 0
       
         for(let index = 0; index < iterations; ++index){
             currentLine = lines[index]
-            // console.log(currentLine)
             currentMaxLen = Math.ceil(Math.min(currentLine.length,(text.length - charOffset)/2))
-            // console.log("current max len = " + currentMaxLen, "\ncurrent line length = " + currentLine.length, "\ntext.length = " + text.length + "\ncharOffset = " + charOffset)
             charCounter = 0
             for(let i = 0; i < currentMaxLen; i++){
                 let s = document.createElement('span')
-                //s.textContent = je.textContent[charOffset + i + currentMaxLen] + je.textContent[charOffset + i]
                 char1Offset = charOffset + i + (currentMaxLen)
                 char2Offset = charOffset + i
                 if(char1Offset < text.length){
                     char1 = text[char1Offset]
-                    // char1 = char1Offset
                     charCounter += 1
                 }
                 else {
@@ -182,62 +170,23 @@ function ready(){
                 }
                 if(char2Offset < text.length){
                     char2 = text[char2Offset]
-                    // char2 = char2Offset
                     charCounter +=1
                 }
                 else {
                     char2 = spacerCharacter
                 }
-                //char2 = text[char2Offset]
                 s.textContent = "" + char1 + char2
-                //s.textContent = "" + (charOffset + i + currentMaxLen) + ',' + (charOffset+i)
-                // charCounter += 2
                 s.classList.add('num')
                 s.classList.add('je-modified')
                 s.style.color = 'blue'
                 je.parentNode.insertBefore(s,je)
-                //temp.appendChild(s)
             }
             charOffset += charCounter
         
       }
       
       je.style.display = 'none'
-      
-        //temp.textContent = "línur: " + lines.length
-      //console.log(je,temp)
-        //je.parentNode.insertBefore(temp,je)
-      //je.replaceWith(temp)
   }
 }
 
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ready()
