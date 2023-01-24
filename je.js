@@ -116,37 +116,28 @@ function arrayFrom( arrayLike ) {
 
 
 
+document.addEventListener('resize',processElements)
 
 
 
+let style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = '.comment-modified {text-combine-upright: all;-webkit-text-combine: horizontal;overflow-wrap: break-word;display: inline-block;writing-mode: vertical-rl;font-family: monospace;}';
+document.getElementsByTagName('head')[0].appendChild(style);
 
-
-find_btn = document.querySelector('.button-yo')
-if(!find_btn){
-  btn = document.createElement('button')
-  btn.addEventListener('click',ready)
-  btn.textContent = 'netti netti'
-  btn.classList.add('button-yo')
-  document.body.appendChild(btn)
-}
-
-document.addEventListener('resize',ready)
-
-
-
-function ready(){
-  jeAll = document.querySelectorAll('.jon-egill')
-  alreadyModifiedSpans = document.querySelectorAll('.je-modified')
+function processElements(){
+  all_elements = document.querySelectorAll('.comment')
+  alreadyModifiedSpans = document.querySelectorAll('.comment-modified')
   for(let el of alreadyModifiedSpans){
     console.log("Removing: " + el.textContent)
     el.remove()
   }
-  for(let je of jeAll){
-    if(je.style.display == 'none'){
-        je.style.display = ''
+  for(let el of all_elements){
+    if(el.style.display == 'none'){
+        el.style.display = ''
     }
-      text = je.textContent
-      lines = extractLinesFromTextNode(je.firstChild)
+      text = el.textContent
+      lines = extractLinesFromTextNode(el.firstChild)
 
       spacerCharacter = "\u3000"
       maxLen = Math.max(...lines.map(line => line.length))
@@ -176,17 +167,16 @@ function ready(){
                     char2 = spacerCharacter
                 }
                 s.textContent = "" + char1 + char2
-                s.classList.add('num')
-                s.classList.add('je-modified')
+                s.classList.add('comment-modified')
                 s.style.color = 'blue'
-                je.parentNode.insertBefore(s,je)
+                el.parentNode.insertBefore(s,el)
             }
             charOffset += charCounter
         
       }
       
-      je.style.display = 'none'
+      el.style.display = 'none'
   }
 }
 
-ready()
+processElements()

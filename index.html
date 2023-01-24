@@ -9,33 +9,32 @@
     </head>
     <body onresize="ready()">
         <!-- <div class="buffer"></div> -->
-        <button class="button-yo" onclick="ready()" style="min-height: 2rem;margin: auto;text-align: center;">Breyta í comments</button>
         <div class="container">
 
             <p lang="zh-Hant" contenteditable="true">
                 有个
-                <span contenteditable="true" class="num">105</span>
+                <span contenteditable="true" class="comment">105</span>
                 好大
-                <span contenteditable="true" class="num">4</span>
+                <span contenteditable="true" class="comment">4</span>
                 大
-                <span contenteditable="true" class="num">有个</span>
-                <!-- <span contenteditable="true" class="jon-egill" id="jon-egill">有个有好大好大好大有个有好好大有个有好大好大好大</span> -->
-                <span contenteditable="true" class="jon-egill" id="jon-egill">个好大有个好大有个个个</span>
+                <span contenteditable="true" class="comment">有个</span>
+                <!-- <span contenteditable="true" class="comment" id="comment">有个有好大好大好大有个有好好大有个有好大好大好大</span> -->
+                <span contenteditable="true" class="comment" id="comment">个好大有个好大有个个个</span>
 
-                <span contenteditable="true" class="num">有29</span>
+                <span contenteditable="true" class="comment">有29</span>
                 好大好大
-                <span contenteditable="true" class="num">4</span>
-                <span contenteditable="true" class="jon-egill" id="jon-egill">个好大有个好大有个个个</span>
+                <span contenteditable="true" class="comment">4</span>
+                <span contenteditable="true" class="comment" id="comment">个好大有个好大有个个个</span>
                 大
-                <span contenteditable="true" class="num">有29</span>
+                <span contenteditable="true" class="comment">有29</span>
                 好大
-                <span contenteditable="true" class="jon-egill" id="jon-egill">个好大有个好大有个个个</span>
+                <span contenteditable="true" class="comment" id="comment">个好大有个好大有个个个</span>
 
-                <span contenteditable="true" class="num">有个</span>
-                <span contenteditable="true" class="jon-egill" id="jon-egill">个好大有个好大有个个个</span>
+                <span contenteditable="true" class="comment">有个</span>
+                <span contenteditable="true" class="comment" id="comment">个好大有个好大有个个个</span>
 
             <br/>
-                <!-- <span contenteditable="true" class="jon-egill" id="jon-egill">有个有好大好大好大</span> -->
+                <!-- <span contenteditable="true" class="comment" id="comment">有个有好大好大好大</span> -->
             </p>
         </div>
     </body>
@@ -54,7 +53,7 @@
         .buffer {
             height: 3rem;
         }
-        .num {
+        .comment {
             text-combine-upright: all;
             -webkit-text-combine: horizontal;
             overflow-wrap: break-word;
@@ -71,7 +70,7 @@
             /* max-width:90vw; */
         }
 
-        .jon-egill {
+        .comment {
             color:red;
             overflow-wrap: break-word;
             font-family: monospace;
