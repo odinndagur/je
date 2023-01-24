@@ -144,7 +144,7 @@ function processElements(){
       iterations = Math.ceil(text.length/maxLen)
       charOffset = 0
       
-        for(let index = 0; index < iterations; ++index){
+        for(let index = 0; index < Math.min(iterations,lines.length); index++){
             currentLine = lines[index]
             currentMaxLen = Math.ceil(Math.min(currentLine.length,(text.length - charOffset)/2))
             charCounter = 0
