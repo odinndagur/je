@@ -168,15 +168,6 @@ function processElements(){
                     char2 = spacerCharacter
                 }
                 s.textContent = "" + char1 + char2
-                const styles = window.getComputedStyle(el);
-                let cssText = styles.cssText;
-                if (!cssText) {
-                cssText = Array.from(styles).reduce((str, property) => {
-                    return `${str}${property}:${styles.getPropertyValue(property)};`;
-                }, '');
-                }
-                // 👇️ Assign CSS styles to the element
-                //s.style.cssText = cssText;
                 s.classList.add('comment')
                 s.classList.add('comment-modified')
                 //s.style.color = 'blue'
