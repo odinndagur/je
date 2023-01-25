@@ -125,6 +125,7 @@ style.type = 'text/css';
 style.innerHTML = '.comment-modified {text-combine-upright: all;-webkit-text-combine: horizontal;overflow-wrap: break-word;display: inline-block;writing-mode: vertical-rl;font-family: monospace;}';
 document.getElementsByTagName('head')[0].appendChild(style);
 
+
 function processElements(){
   all_elements = document.querySelectorAll('.comment')
   alreadyModifiedSpans = document.querySelectorAll('.comment-modified')
@@ -167,6 +168,15 @@ function processElements(){
                     char2 = spacerCharacter
                 }
                 s.textContent = "" + char1 + char2
+                const styles = window.getComputedStyle(el);
+                let cssText = styles.cssText;
+                if (!cssText) {
+                cssText = Array.from(styles).reduce((str, property) => {
+                    return `${str}${property}:${styles.getPropertyValue(property)};`;
+                }, '');
+                }
+                // 👇️ Assign CSS styles to the element
+                s.style.cssText = cssText;
                 s.classList.add('comment-modified')
                 s.style.color = 'blue'
                 el.parentNode.insertBefore(s,el)
