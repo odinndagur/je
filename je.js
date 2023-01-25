@@ -178,7 +178,7 @@ function processElements(){
                 // 👇️ Assign CSS styles to the element
                 s.style.cssText = cssText;
                 s.classList.add('comment-modified')
-                s.style.color = 'blue'
+                //s.style.color = 'blue'
                 el.parentNode.insertBefore(s,el)
             }
             charOffset += charCounter
